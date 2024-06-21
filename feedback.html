@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Plus Plumbing</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the feedback form */
+        .form-container {
+            max-width: 600px;
+            width: 90%;
+            background-color: #1a202c;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #cbd5e0;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #4a5568;
+            background-color: #2d3748;
+            color: #cbd5e0;
+            margin-bottom: 12px;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #4a5568;
+            background-color: #2d3748;
+            color: #cbd5e0;
+            margin-bottom: 12px;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background-color: #2b6cb0;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background-color: #2c5282;
+        }
+
+        .error-message {
+            color: #f56565;
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500 flex items-center py-7">
+    <div class="form-container py-7 mx-auto">
+        <h1 class="text-3xl font-bold mb-6">We Appreciate Your Feedback!</h1>
+        <p class="mb-6">At Plus Plumbing, we strive to ensure all of our customers are 100% satisfied with the service we provide. Your feedback is valued in helping us improve. Please fill out the form below so that we can reach out and address any concerns you may have. We look forward to making things right!</p>
+
+        <form id="feedback-form">
+            <div class="mb-4">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-input" >
+                <div id="name-error" class="error-message"></div>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-input" >
+                <div id="email-error" class="error-message"></div>
+            </div>
+
+            <div class="mb-4">
+                <label for="phone" class="form-label">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="form-input">
+            </div>
+
+            <div class="mb-4">
+                <label for="date" class="form-label">Date of Service:</label>
+                <input type="date" id="date" name="date" class="form-input" >
+                <div id="date-error" class="error-message"></div>
+            </div>
+
+            <div class="mb-4">
+                <label for="experience" class="form-label">Describe Your Experience:</label>
+                <textarea id="experience" name="experience" class="form-textarea" ></textarea>
+                <div id="experience-error" class="error-message"></div>
+            </div>
+
+            <div class="mb-4">
+                <label for="improvements" class="form-label">How Can We Improve?</label>
+                <textarea id="improvements" name="improvements" class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Submit Feedback</button>
+        </form>
+
+        <p class="mt-6">Thank you for taking the time to provide us with your feedback. We value your input and will make every effort to resolve any issues and improve our service.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const feedbackForm = document.getElementById('feedback-form');
+
+            feedbackForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Perform form validation
+                if (!validateForm()) {
+                    return;
+                }
+
+                // Example action (submit to a server)
+                const formData = new FormData(feedbackForm);
+                const serializedData = {};
+                for (const [key, value] of formData.entries()) {
+                    serializedData[key] = value;
+                }
+                console.log('Form data:', serializedData);
+
+                // Clear form fields after submission (optional)
+                feedbackForm.reset();
+            });
+
+            function validateForm() {
+                let isValid = true;
+
+                // Reset error messages
+                document.querySelectorAll('.error-message').forEach(function (error) {
+                    error.textContent = '';
+                });
+
+                // Validate name
+                const nameInput = document.getElementById('name');
+                if (!nameInput.checkValidity()) {
+                    document.getElementById('name-error').textContent = nameInput.validationMessage;
+                    isValid = false;
+                }
+
+                // Validate email
+                const emailInput = document.getElementById('email');
+                if (!emailInput.checkValidity()) {
+                    document.getElementById('email-error').textContent = emailInput.validationMessage;
+                    isValid = false;
+                }
+
+                // Validate date
+                const dateInput = document.getElementById('date');
+                if (!dateInput.checkValidity()) {
+                    document.getElementById('date-error').textContent = dateInput.validationMessage;
+                    isValid = false;
+                }
+
+                // Validate experience description
+                const experienceInput = document.getElementById('experience');
+                if (!experienceInput.checkValidity()) {
+                    document.getElementById('experience-error').textContent = experienceInput.validationMessage;
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+        });
+    </script>
+</body>
+
+</html>
