@@ -11,11 +11,8 @@
         .form-container {
             max-width: 600px;
             width: 90%;
-            background-color: #1a202c;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            color: #cbd5e0;
         }
 
         .form-label {
@@ -29,8 +26,6 @@
             padding: 8px;
             border-radius: 4px;
             border: 1px solid #4a5568;
-            background-color: #2d3748;
-            color: #cbd5e0;
             margin-bottom: 12px;
         }
 
@@ -39,24 +34,16 @@
             padding: 8px;
             border-radius: 4px;
             border: 1px solid #4a5568;
-            background-color: #2d3748;
-            color: #cbd5e0;
             margin-bottom: 12px;
             min-height: 120px;
         }
 
         .form-submit {
-            background-color: #2b6cb0;
-            color: #fff;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-        }
-
-        .form-submit:hover {
-            background-color: #2c5282;
         }
 
         .error-message {
@@ -67,8 +54,8 @@
     </style>
 </head>
 
-<body class="bg-gray-500 flex items-center py-7">
-    <div class="form-container py-7 mx-auto">
+<body class="bg-gray-100 flex items-center py-7">
+    <div class="bg-white rounded-lg shadow-md form-container py-7 mx-auto">
         <h1 class="text-3xl font-bold mb-6">We Appreciate Your Feedback!</h1>
         <p class="mb-6">At Plus Plumbing, we strive to ensure all of our customers are 100% satisfied with the service we provide. Your feedback is valued in helping us improve. Please fill out the form below so that we can reach out and address any concerns you may have. We look forward to making things right!</p>
 
@@ -107,7 +94,7 @@
                 <textarea id="improvements" name="improvements" class="form-textarea"></textarea>
             </div>
 
-            <button type="submit" class="form-submit">Submit Feedback</button>
+            <button type="submit" class="form-submit bg-gray-500 text-white">Submit Feedback</button>
         </form>
 
         <p class="mt-6">Thank you for taking the time to provide us with your feedback. We value your input and will make every effort to resolve any issues and improve our service.</p>
